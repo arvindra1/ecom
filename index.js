@@ -11,10 +11,10 @@ const loaders = require("@medusajs/medusa/dist/loaders/index").default;
     try {
       const { container } = await loaders({
         directory,
-        expressApp: app,
-      });
-      const configModule = container.resolve("configModule");
-      const port = process.env.PORT || 7000;
+        expressApp: app
+      })
+      const configModule = container.resolve("configModule")
+       const port = process.env.PORT || 3000;
 
       const server = GracefulShutdownServer.create(
         app.listen(port, (err) => {
