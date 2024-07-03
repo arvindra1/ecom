@@ -1,6 +1,4 @@
 const express = require("express");
-const dotenv = require("dotenv");
-dotenv.config()
 const { GracefulShutdownServer } = require("medusa-core-utils");
 
 const loaders = require("@medusajs/medusa/dist/loaders/index").default;
