@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      - PGUSER=default
+      - PGHOST=ep-raspy-salad-a1xifsuv-pooler.ap-southeast-1.aws.neon.tech
+      - PGDATABASE=verceldb
+      - PGPASSWORD=Us2El9KYSBNW
+
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=default
+      - POSTGRES_PASSWORD=Us2El9KYSBNW
+      - POSTGRES_DB=verceldb
+    ports:
+      - "5432:5432"
