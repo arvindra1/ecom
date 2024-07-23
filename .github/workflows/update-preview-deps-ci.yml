@@ -5,7 +5,7 @@ on:
        -dev
 
 jobs:
-  update:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
