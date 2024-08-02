@@ -2,7 +2,15 @@ version: "3.8"
 
 services:
   app:
-    build: .
+   
+    build:
+     context: . 
+     dockerfile: Dockerfile
+    image: app
+    container_name: app
+    # This defines the restart policy. The default is no,
+    # but we have set the container to restart unless it is stopped.
+
     ports:
       - "3000:3000"
     depends_on:

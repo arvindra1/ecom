@@ -1,22 +1,23 @@
-FROM node:18.20.3-alpine
+# Here we are getting our node as Base image
+FROM node:20.10.0
 
-# Set the working directory
-WORKDIR /
+# create user in the docker image
+USER node
 
-# Copy the medusa configuration file
-COPY medusa-config.js /medusa-config.js
+# Creating a new directory for app files and setting path in the container
+RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
-# Copy package.json and yarn.lock to install dependencies
-COPY package.json yarn.lock ./
+# setting working directory in the container
+WORKDIR /home/node/app
 
-# Install dependencies
-RUN yarn install
+# grant permission of node project directory to node user
+COPY --chown=node:node . .
 
-# Copy the rest of the application code
-COPY . .
+# installing the dependencies into the container
+RUN npm install or yarn install
 
-# Expose the required port (if applicable)
+# container exposed network port number
 EXPOSE 3000
 
-# Start the application
-CMD ["node", "index.js"]
+# command to run within the container
+CMD [ "yarn", "start" ]
